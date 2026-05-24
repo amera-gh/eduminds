@@ -2,18 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Achievement extends Model
 {
-        protected $fillable = [
+    use HasFactory;
+
+    protected $fillable = [
         'name',
         'description',
         'badge_icon',
         'condition_value',
-        'xp_reward'
+        'xp_reward',
     ];
-
 
     public function students()
     {
@@ -21,7 +23,4 @@ class Achievement extends Model
             ->withPivot('earned_at')
             ->withTimestamps();
     }
-    
-
-
 }

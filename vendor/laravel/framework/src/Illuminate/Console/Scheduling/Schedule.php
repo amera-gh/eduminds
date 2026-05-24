@@ -295,7 +295,7 @@ class Schedule
      */
     public function exec($command, array $parameters = [])
     {
-        if ($parameters !== []) {
+        if (count($parameters)) {
             $command .= ' '.$this->compileParameters($parameters);
         }
 
@@ -430,20 +430,6 @@ class Schedule
     }
 
     /**
-     * Get all of the events on the schedule which run on any of the provided environments.
-     *
-     * @param  list<string>  $environments
-     * @return \Illuminate\Console\Scheduling\Event[]
-     */
-    public function eventsForEnvironments(array $environments): array
-    {
-        return array_values(array_filter(
-            $this->events(),
-            static fn (Event $event) => array_any($environments, $event->runsInEnvironment(...))
-        ));
-    }
-
-    /**
      * Specify the cache store that should be used to store mutexes.
      *
      * @param  \UnitEnum|string  $store
@@ -493,8 +479,6 @@ class Schedule
      * @param  string  $method
      * @param  array  $parameters
      * @return mixed
-     *
-     * @throws \BadMethodCallException
      */
     public function __call($method, $parameters)
     {

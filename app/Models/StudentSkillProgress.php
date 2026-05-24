@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class StudentSkillProgress extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'student_id',
         'skill_id',
@@ -14,15 +16,18 @@ class StudentSkillProgress extends Model
         'attempts_count'
     ];
 
+    protected $casts = [
+        'score' => 'integer',
+        'attempts_count' => 'integer',
+    ];
+    
     public function student()
     {
-         return $this->belongsTo(Student::class);
+        return $this->belongsTo(Student::class);
     }
 
-        public function skill()
+    public function skill()
     {
-         return $this->belongsTo(Skill::class);
+        return $this->belongsTo(Skill::class);
     }
-
-
 }

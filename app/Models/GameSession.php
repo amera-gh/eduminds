@@ -2,23 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class GameSession extends Model
 {
-protected $fillable = [
-    'student_id',
-    'game_id',
-    'skill_id',
-    'status',
-    'score',
-    'mistakes',
-    'hints_used',
-    'attempts_count'
+    use HasFactory;
 
+    protected $fillable = [
+        'student_id',
+        'game_id',
+        'skill_id',
+        'status',
+        'score',
+        'mistakes',
+        'hints_used',
+        'attempts_count',
 
-];
-
+    ];
 
     public function student()
     {
@@ -32,8 +33,6 @@ protected $fillable = [
 
     public function skill()
     {
-       return $this->belongsTo(Skill::class);
+        return $this->belongsTo(Skill::class);
     }
-
-
 }
