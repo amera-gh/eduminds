@@ -29,9 +29,9 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
 
-    Route::get('/getGrades', [SetupController::class, 'getGrades']);
-    Route::get('/getInterests', [SetupController::class, 'getInterests']);
-    Route::get('/getLearningTopics', [SetupController::class, 'getLearningTopics']);
+    Route::get('/getGrades', [\App\Http\Controllers\Api\SetupController::class, 'getGrades']);
+    Route::get('/getInterests', [\App\Http\Controllers\Api\SetupController::class, 'getInterests']);
+    Route::get('/getLearningTopics', [\App\Http\Controllers\Api\SetupController::class, 'getLearningTopics']);
 
     //Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('forgotPassword');
     //Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('resetPassword');
